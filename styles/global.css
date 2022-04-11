@@ -135,6 +135,10 @@ a {
     height: 1em;
   }
 
+  img.rounded {
+    border-radius: 50%;
+  }
+
   @media (max-width: 600px) {
     .grid {
       width: 100%;

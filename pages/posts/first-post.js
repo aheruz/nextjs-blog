@@ -11,10 +11,12 @@ export default function FirstPost() {
           <h1 className="title">{title}</h1>
           <p className='description'>This is my first post <code>:)</code></p>
           <Image
-            src="/images/profile.jpg" // Route of the image file
+            src="/images/profile.gif" // Route of the image file
             height={144} // Desired size with correct aspect ratio
             width={144} // Desired size with correct aspect ratio
             alt="Your Name"
+            layout="fixed"
+            className="rounded"
           />
           <br/>
           <h2>
