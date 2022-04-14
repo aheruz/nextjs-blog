@@ -1,8 +1,9 @@
 import Layout from '../components/layout'
 import Link from 'next/link'
 import Image from 'next/image'
+import { getSortedPostsData } from '../lib/posts'
 
-export default function Home() {
+export default function Home({allPostsData}) {
   return (
     <Layout meta_title="Create Next App">
 
@@ -62,19 +63,24 @@ export default function Home() {
       </div>
 
       <div className="grid">
-      <Link href="posts/first-post">
-        <a className="card">
-          <h3>First post &rarr;</h3>
-          <p>Lorem ipsum dolor amet API.</p>
-        </a>
-      </Link>
-      <Link href="posts/first-post">
-        <a className="card">
-          <h3>First post &rarr;</h3>
-          <p>Lorem ipsum dolor amet API.</p>
-        </a>
-      </Link>
+        {allPostsData.map(({id, date, title}) => (
+          <Link href={`/posts/${id}`}>
+            <a className="card">
+              <h3>{title} &rarr;</h3>
+              <p>{date}</p>
+            </a>
+          </Link>
+        ))}
       </div>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData()
+  return {
+    props: {
+      allPostsData
+    }
+  }
 }
